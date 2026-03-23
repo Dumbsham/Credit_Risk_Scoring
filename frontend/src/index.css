@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --green: #00ff88;
+  --amber: #ffb800;
+  --red: #ff3b3b;
+  --bg: #050508;
+  --surface: #0d0d14;
+  --border: rgba(0, 255, 136, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Rajdhani', sans-serif;
+  cursor: crosshair;
+}
+
+.mono { font-family: 'Share Tech Mono', monospace; }
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Glowing border */
+.glow-border {
+  border: 1px solid var(--border);
+  box-shadow: 0 0 20px rgba(0,255,136,0.05), inset 0 0 20px rgba(0,255,136,0.02);
+}
+
+.glow-border:hover {
+  border-color: rgba(0,255,136,0.3);
+  box-shadow: 0 0 30px rgba(0,255,136,0.1), inset 0 0 30px rgba(0,255,136,0.05);
+  transition: all 0.3s ease;
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, var(--green), #00cfff, var(--green));
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+/* Slide in from bottom */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up { animation: slideUp 0.5s ease forwards; }
+.slide-up-delay-1 { animation: slideUp 0.5s 0.1s ease both; }
+.slide-up-delay-2 { animation: slideUp 0.5s 0.2s ease both; }
+.slide-up-delay-3 { animation: slideUp 0.5s 0.3s ease both; }
+
+/* Flicker */
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+  98% { opacity: 0.6; }
+}
+.flicker { animation: flicker 6s infinite; }
+
+/* Pulse dot */
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+.pulse-dot { animation: pulseDot 1.5s infinite; }
+
+/* Bar fill animation */
+@keyframes fillBar {
+  from { width: 0%; }
+}
+.fill-bar { animation: fillBar 0.8s ease-out forwards; }
+
+/* Number counter feel */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.count-up { animation: countUp 0.4s ease forwards; }
