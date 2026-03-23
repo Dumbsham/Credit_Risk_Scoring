@@ -1,5 +1,5 @@
 # 🏦 Credit Risk Scoring
-
+![alt text](image.png)
 > Predict loan default risk with explainable AI — built with TensorFlow, SHAP, FastAPI, and React.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
